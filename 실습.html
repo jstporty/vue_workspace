@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>childParentComm</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+<body>
+  <div id="counter">
+    {{counter}}
+  </div>
+  <script>
+    var counterView = new Vue({
+      el: '#counter',
+      data: {
+        counter: "",
+      }
+    });
+    window.onload = function() {
+      setInterval(addCount, "1000");
+    }
+
+    function addCount() {\
+      let dateInfo = new Date();
+      counterView.counter = dateInfo.getFullYear() + "년 " + (dateInfo.getMonth() + 1) + "월 " + dateInfo.getDate() +
+        "일" + "-" + dateInfo.getHours() + ":" + dateInfo.getMinutes() + ":" +
+        dateInfo.getSeconds();
+
+
+
+    }
+  </script>
+  </body>
+
+</html>

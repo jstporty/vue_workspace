@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>childParentComm</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <div>{{first}},{{second}},{{third}}</div>
+    <form v-on:submit="onSubmitForm">
+      <input ref="answer" type="number" v-model="value1">
+      <input ref="answer" type="number" v-model="value2">
+      <input ref="answer" type="number" v-model="value3">
+      <button ref="answer" type="submit">확인</button>
+      <div>{{value1}}</div>
+    </form>
+    <div id="result">{{result}}</div>
+  </div>
+  <script>
+    const eventBus = new Vue({
+      el: '#app',
+      data: {
+        first: Math.floor(Math.random() * 10),
+        second: Math.floor(Math.random() * 10),
+        third: Math.floor(Math.random() * 10),
+        value1: ' ',
+        value2: ' ',
+        value3: ' ',
+        result: ' '
+      },
+
+      methods: {
+        onSubmitForm(e) {
+          e.preventDefault();
+          this.$refs.answer.focus();
+          if (this.first === parseInt(this.value1)) {
+            this.result = "스트라이";
+          } else {
+            this.result = "볼";
+
+          }
+        },
+      },
+    });
+
+  </script>
+</body>
+
+</html>
